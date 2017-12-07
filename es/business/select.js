@@ -10,11 +10,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const es_1 = require("mysql-i/es");
 const connConfig_1 = require("./connConfig");
-function save(list) {
+function select(sql, where) {
     return __awaiter(this, void 0, void 0, function* () {
         let conn = yield es_1.ConnectionHelper.create(connConfig_1.connConfig);
-        yield es_1.Save.savesSeqWithTran(conn, list);
+        return yield es_1.Select.select(conn, {
+            sql,
+            where
+        });
     });
 }
-exports.save = save;
-//# sourceMappingURL=save.js.map
+exports.select = select;
+//# sourceMappingURL=select.js.map

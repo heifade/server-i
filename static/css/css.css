@@ -1,0 +1,17 @@
+.divEdit {
+  position: absolute;
+  border: solid 1px #ccc;
+  background-color: #fff;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  display: none;
+}
+
+.divList {
+
+}
+.tableList {
+  border-collapse: collapse;
+}

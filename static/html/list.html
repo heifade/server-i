@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/list.js"></script>
+    <link rel="stylesheet" href="../css/css.css">
+</head>
+
+<body>
+
+    <input type="button" id="btnAdd" value="添加">
+
+    <div class="divEdit">
+        <table>
+            <tr>
+                <th>编号</th>
+                <td>
+                    <input type="text" id="txtId" value="1" />
+                </td>
+            </tr>
+            <tr>
+                <th>姓名</th>
+                <td>
+                    <input type="text" id="txtName" value="2" />
+                </td>
+            </tr>
+            <tr>
+                <th>值</th>
+                <td>
+                    <input type="text" id="txtValue" value="3" />
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <input type="button" id="btnSave" value="保存">
+                </th>
+            </tr>
+        </table>
+    </div>
+
+    <div class="divList">
+        <table border='1' class="tableList">
+            <thead>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>值</th>
+                <th>操作</th>
+            </thead>
+            <tbody id="listBody">
+
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>
