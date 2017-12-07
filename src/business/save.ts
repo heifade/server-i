@@ -3,5 +3,5 @@ import { connConfig } from "./connConfig";
 
 export async function save(list: Array<any>) {
   let conn = await ConnectionHelper.create(connConfig);
-  await Save.savesSeqWithTran(conn, list);
+  return await Save.savesSeqWithTran(conn, list);
 }

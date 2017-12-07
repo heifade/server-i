@@ -32,6 +32,7 @@ app.use("/save", function(req, res, next) {
 app.use("/select", function(req, res, next) {
   let sql = req.body.sql;
   let where = req.body.where;
+
   select(sql, where)
     .then(result => {
       res.send({
@@ -49,9 +50,4 @@ app.use("/select", function(req, res, next) {
     });
 });
 
-var server = app.listen(3000, function() {
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log("Example app listening at http://%s:%s", host, port);
-});
+export { app };

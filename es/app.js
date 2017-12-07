@@ -28,6 +28,7 @@ app.use("/save", function (req, res, next) {
 app.use("/select", function (req, res, next) {
     let sql = req.body.sql;
     let where = req.body.where;
+    console.log(sql, where);
     select_1.select(sql, where)
         .then(result => {
         res.send({
