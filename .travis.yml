@@ -6,8 +6,9 @@ services:
 before_install:
   - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
   - mysql -e 'create table if not exists test.tbl1(id int AUTO_INCREMENT primary key, name varchar(200), value varchar(200));'
-script :
+before_script:
   - "npm run start"
+script :
   - "npm test"
   # - "npm run build"
   # - "git add es docs"
