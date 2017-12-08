@@ -5,8 +5,8 @@ server-i
 
 [![NPM version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][npm-url]
-[![Build](https://travis-ci.org/heifade/server-i.svg?branch=master)](https://travis-ci.org/heifade/server-i)
-[![Test Coverage](https://coveralls.io/repos/github/heifade/server-i/badge.svg)](https://coveralls.io/github/heifade/server-i?branch=master)
+[![Build](https://travis-ci.org/heifade/server-i.svg?branch=master)](https://travis-ci.org/heifade/server-i?branch=master)
+[![Test Coverage](https://coveralls.io/repos/github/heifade/server-i/badge.svg?branch=master)](https://coveralls.io/github/heifade/server-i?branch=master)
 
 
 
