@@ -20,13 +20,13 @@ cache:
 
 
 deploy:
-  - provider: npm
-    skip_cleanup: true
-    email: heifade@126.com
-    api_key: $NPM_TOKEN
-    on:
-      branch: master
-      repo: heifade/server-i
+  # - provider: npm
+  #   skip_cleanup: true
+  #   email: heifade@126.com
+  #   api_key: $NPM_TOKEN
+  #   on:
+  #     branch: master
+  #     repo: heifade/server-i
   - provider: pages
     skip_cleanup: true
     github_token: $GITHUB_TOKEN
