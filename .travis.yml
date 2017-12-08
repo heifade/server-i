@@ -9,13 +9,18 @@ before_install:
 script: true
   # - "npm test"
   # - "npm run build"
+  - "npm run test-nyc"
 after_script:
   # - "npm run test-nyc"
-  - "npm run build"
+  # - "npm run build"
 
 cache:
   directories:
   - node_modules
+
+branches:
+  only:
+  - master
 
 deploy:
   - provider: npm
