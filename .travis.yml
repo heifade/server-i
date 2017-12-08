@@ -7,11 +7,12 @@ before_install:
   - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
   - mysql -e 'create table if not exists test.tbl1(id int auto_increment primary key, name varchar(200), value varchar(200));'
   - "npm run start"
-script :
+script: true
   # - "npm test"
-  - "npm run build"
+  # - "npm run build"
 after_script:
   - "npm run test-nyc"
+  - "npm run build"
 
 cache:
   directories:
