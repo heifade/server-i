@@ -23,7 +23,7 @@ deploy:
     email: heifade@126.com
     api_key: $NPM_TOKEN
     on:
-      tags: true
+      branch: master
       repo: heifade/server-i
   - provider: pages
     skip_cleanup: true
