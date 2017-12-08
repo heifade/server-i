@@ -1,4 +1,3 @@
-aaa
 language: node_js
 node_js:
   - "8"
@@ -9,7 +8,7 @@ before_install:
   - mysql -e 'create table if not exists test.tbl1(id int auto_increment primary key, name varchar(200), value varchar(200));'
 script:
   # - "npm test"
-  - "npm run build"
+  # - "npm run build"
   # - "npm run test-nyc"
 # after_script:
   # - "npm run test-nyc"
