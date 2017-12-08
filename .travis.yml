@@ -10,7 +10,7 @@ script: true
   # - "npm test"
   # - "npm run build"
 after_script:
-  - "npm run test-nyc"
+  # - "npm run test-nyc"
   - "npm run build"
 
 cache:
