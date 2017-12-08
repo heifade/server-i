@@ -5,14 +5,11 @@ services:
   - mysql
 before_install:
   - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
-  - mysql -e 'create table if not exists test.tbl1(id int AUTO_INCREMENT primary key, name varchar(200), value varchar(200));'
+  - mysql -e 'create table if not exists test.tbl1(id int auto_increment primary key, name varchar(200), value varchar(200));'
   - "npm run start"
 script :
-  - "npm test"
-  # - "npm run build"
-  # - "git add es docs"
-  # - "git commit -m 'rebuild by travis'"
-  # - "git push origin master"
+  # - "npm test"
+  - "npm run build"
 after_script:
   - "npm run test-nyc"
 
@@ -20,11 +17,18 @@ cache:
   directories:
   - node_modules
 
-# deploy:
-#   provider: npm
-#   email: heifade@126.com
-#   api_key: $NPM_TOKEN
-#   on:
-#     tags: true
-#     repo: heifade/mysql-i
+deploy:
+  - provider: npm
+    skip_cleanup: true
+    email: heifade@126.com
+    api_key: $NPM_TOKEN
+    on:
+      tags: true
+      repo: heifade/server-i
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    local_dir: docs
+    on:
+      branch: master
 
