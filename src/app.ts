@@ -1,7 +1,10 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
-import { save } from "./business/save";
-import { select } from "./business/select";
+
+import { apiSave } from "./api/apiSave";
+import { apiSelect } from "./api/apiSelect";
+import { apiExec } from "./api/apiExec";
+import { apiCleanCache } from "./api/apiCleanCache";
 
 let app = express();
 
@@ -9,45 +12,12 @@ app.use("/static", express.static("static"));
 
 app.use(bodyParser.json());
 
-app.use("/save", function(req, res, next) {
-  let list = req.body;
+app.use("/save", apiSave);
 
-  save(list)
-    .then(result => {
-      res.send({
-        result: "success",
-        data: result
-      });
-      next();
-    })
-    .catch(err => {
-      res.send({
-        result: "error",
-        msg: err
-      });
-      next();
-    });
-});
+app.use("/select", apiSelect);
 
-app.use("/select", function(req, res, next) {
-  let sql = req.body.sql;
-  let where = req.body.where;
+app.use("/exec", apiExec);
 
-  select(sql, where)
-    .then(result => {
-      res.send({
-        result: "success",
-        data: result
-      });
-      next();
-    })
-    .catch(err => {
-      res.send({
-        result: "error",
-        msg: err
-      });
-      next();
-    });
-});
+app.use("/cleanCache", apiCleanCache);
 
 export { app };
