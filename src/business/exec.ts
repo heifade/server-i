@@ -12,5 +12,7 @@ export async function exec(list: string[]) {
   } catch (err) {
     await Transaction.rollback(conn);
     return false;
+  } finally {
+    await ConnectionHelper.close(conn);
   }
 }

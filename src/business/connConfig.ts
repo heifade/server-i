@@ -1,8 +1,9 @@
 export let connConfig = {
-  host: "127.0.0.1",
-  user: "travis",
-  password: "",
+  // host: "127.0.0.1",
+  host: "192.168.1.200",
+  user: "root",
+  password: "soft",
   database: "test",
-  port: 3306,
-  timeout: 60000
+  port: 33306,
+  timeout: 120000
 };

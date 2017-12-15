@@ -9,7 +9,7 @@
     "start": "npm run tsBuild && node ./es/main.js",
     "docs": "typedoc --out docs src --module commonjs --hideGenerator && node ./tools/replaceDocFileUnderline.js",
     "build": "npm run removeDist && npm run tsBuild && npm run docs",
-    "test": "nyc mocha -t 5000",
+    "test": "nyc mocha -t 120000",
     "test-nyc": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
   "nyc": {

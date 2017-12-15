@@ -36,5 +36,7 @@ export async function save(list: Array<any>) {
 
   await Save.savesSeqWithTran(conn, list);
 
+  await ConnectionHelper.close(conn);
+
   
 }

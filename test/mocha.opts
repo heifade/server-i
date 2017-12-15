@@ -2,4 +2,4 @@
 --require source-map-support/register
 --full-trace
 --bail
-test/**/t2.test.ts
+test/**/exec.test.ts

@@ -1,39 +1,32 @@
 import { expect } from "chai";
-import { fetchHelper } from "./fetchHelper";
-import '../src/app';
+import { app } from "../src/app";
+import * as request from "supertest";
+import { ask } from "./fetchHelper";
 import "mocha";
+
+let table = `tbl_server_test1`;
 
 let getData = async function() {
   let pars = {
-    sql: `select * from information_schema.TABLES where TABLE_SCHEMA = 'test' and TABLE_NAME in (?,?)`,
-    where: ["tbl_server_test1", "tbl_server_test2"]
+    sql: `select * from information_schema.TABLES where TABLE_SCHEMA = 'test' and TABLE_NAME in (?)`,
+    where: [table]
   };
 
-  let result = await fetchHelper("select", pars);
-
-  return await result.json();
+  try {
+    return await ask(`select`, pars);
+  } catch (err) {
+    return null;
+  }
 };
 
 describe("exec", function() {
-  it("exec", done => {
-    let asyncFunc = async function() {
-      let pars = [`create table if not exists tbl_server_test1(id int primary key, value varchar(100))`, `create table if not exists tbl_server_test2(id int primary key, value varchar(100))`];
+  it("exec", async () => {
+    let pars = [`drop table if exists ${table}`, `create table if not exists ${table}(id int primary key, value varchar(100))`];
 
-      let result = await fetchHelper(`exec`, pars);
+    let result = await ask(`exec`, pars);
+    expect(result.result === "success" && result.data === true).to.be.true;
 
-      let json = await result.json();
-      expect(json.result === "success" && json.data === true).to.be.true;
-
-      let tableList = await getData();
-      expect(tableList.result === "success" && tableList.data.length == 2).to.be.true;
-    };
-
-    asyncFunc()
-      .then(() => {
-        done();
-      })
-      .catch(err => {
-        done(err);
-      });
+    result = await getData();
+    expect(result.result === "success" && result.data.length == 1).to.be.true;
   });
 });
