@@ -6,6 +6,7 @@ export function apiExec(req: Request, res: Response, next: NextFunction) {
 
   exec(list)
     .then(result => {
+      console.log(11, result);
       res.send({
         result: "success",
         data: result
@@ -13,6 +14,7 @@ export function apiExec(req: Request, res: Response, next: NextFunction) {
       next();
     })
     .catch(err => {
+      console.log(2, err);
       res.send({
         result: "error",
         msg: err
