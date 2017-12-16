@@ -8,12 +8,10 @@ export async function exec(list: string[]) {
     await Transaction.begin(conn);
     await Exec.execsSeq(conn, list);
     await Transaction.commit(conn);
-    console.log(12, 'ok');
-    return true;
+    return await Promise.resolve();
   } catch (err) {
     await Transaction.rollback(conn);
-    console.log(12, err);
-    return false;
+    return await Promise.reject(err);
   } finally {
     await ConnectionHelper.close(conn);
   }

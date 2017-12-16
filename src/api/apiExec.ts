@@ -5,16 +5,14 @@ export function apiExec(req: Request, res: Response, next: NextFunction) {
   let list = req.body;
 
   exec(list)
-    .then(result => {
-      console.log(11, result);
+    .then(() => {
       res.send({
         result: "success",
-        data: result
+        data: null,
       });
       next();
     })
     .catch(err => {
-      console.log(2, err);
       res.send({
         result: "error",
         msg: err

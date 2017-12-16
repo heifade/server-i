@@ -25,21 +25,25 @@ describe("exec", function() {
     let pars = [`drop table if exists ${table1}`, `create table if not exists ${table1}(id int primary key, value varchar(100))`];
 
     let result = await ask(`exec`, pars);
-    expect(result.result === "success" && result.data === true).to.be.true;
+    expect(result.result).to.be.equal("success");
 
-    result = await getData('table1');
-    expect(result != null && result.result === "success" && result.data.length == 1).to.be.true;
+    result = await getData(table1);
+    expect(result).not.to.be.null;
+    expect(result.result).to.be.equal("success");
+    expect(result.data.length).to.be.equal(1);
   });
-
 
   it("exec with error", async () => {
-    let pars = [`drop table if exists ${table2}`, `create table  if not exists ${table2}(id int primary key, value varchar(100))`];
-
+    let pars = [`drop table if exists ${table2}`, `create table if not exists ${table2}(id int primary key, value varchar(100))`];
     let result = await ask(`exec`, pars);
-    console.log(1, result);
-    expect(result.result === "success" && result.data === true).to.be.true;
 
+    expect(result).not.to.be.null;
+    expect(result.result).to.be.equal("success");
+
+    pars = [`create table ${table2}(id int primary key, value varchar(100))`];
+    result = await ask(`exec`, pars);
+
+    expect(result.result).to.be.equal("error");
+    expect(result.msg.code).to.be.equal("ER_TABLE_EXISTS_ERROR");
   });
-
-
 });
