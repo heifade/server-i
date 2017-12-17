@@ -32,11 +32,9 @@ export async function save(list: Array<any>) {
     m.saveType = m.saveType;
   });
 
-  
-
-  await Save.savesSeqWithTran(conn, list);
-
-  await ConnectionHelper.close(conn);
-
-  
+  try {
+    await Save.savesSeqWithTran(conn, list);
+  } finally {
+    await ConnectionHelper.close(conn);
+  }
 }

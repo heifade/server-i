@@ -13,7 +13,7 @@ export async function fetchHelper(url: string, data: any) {
   });
 }
 
-export async function ask(url: string, pars: object) {
+export async function ask(url: string, pars: any) {
   return new Promise<any>((resolve, reject) => {
     request(app)
       .post(`/${url}`)

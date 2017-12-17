@@ -10,8 +10,8 @@ export function apiCleanCache(req: Request, res: Response, next: NextFunction) {
       for (let database of databaseList) {
         await cleanSchema(database);
       }
-    } else if (isString(databaseList)) {
-      await cleanSchema(databaseList);
+    } else {
+      return Promise.reject("Please input is array!");
     }
   };
 

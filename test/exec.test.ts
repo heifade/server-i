@@ -1,6 +1,4 @@
 import { expect } from "chai";
-import { app } from "../src/app";
-import * as request from "supertest";
 import { ask } from "./fetchHelper";
 import "mocha";
 
@@ -45,5 +43,12 @@ describe("exec", function() {
 
     expect(result.result).to.be.equal("error");
     expect(result.msg.code).to.be.equal("ER_TABLE_EXISTS_ERROR");
+  });
+
+  it("cleanCache with error", async () => {
+    let result = await ask(`cleanCache`, "test");
+
+    expect(result.result).to.be.equal('error');
+    expect(result.msg).to.be.equal('Please input is array!');
   });
 });

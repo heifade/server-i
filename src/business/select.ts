@@ -3,12 +3,14 @@ import { connConfig } from "./connConfig";
 
 export async function select(sql: string, where: Array<any>) {
   let conn = await ConnectionHelper.create(connConfig);
-  let result = await Select.select(conn, {
-    sql,
-    where
-  });
 
-  await ConnectionHelper.close(conn);
-
-  return result;
+  try {
+    let result = await Select.select(conn, {
+      sql,
+      where
+    });
+    return result;
+  } finally {
+    await ConnectionHelper.close(conn);
+  }
 }
