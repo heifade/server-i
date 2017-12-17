@@ -1,6 +1,6 @@
 {
   "name": "server-i",
-  "version": "0.0.1-beta2",
+  "version": "0.0.1-beta3",
   "description": "",
   "main": "./es/index.js",
   "module": "./es/index.js",
