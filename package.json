@@ -42,7 +42,8 @@
   },
   "homepage": "https://github.com/heifade/server-i#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "express-serve-static-core": "^0.1.1"
   },
   "devDependencies": {
     "@types/chai": "^4.0.8",
