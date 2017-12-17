@@ -1,9 +1,10 @@
 {
   "name": "server-i",
-  "version": "0.0.1-beta9",
+  "version": "0.0.1-beta10",
   "description": "",
   "main": "./es/index.js",
   "module": "./es/index.js",
+  "typings": "./es/index",
   "files": [
     "es"
   ],
