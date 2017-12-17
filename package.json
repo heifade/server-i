@@ -1,6 +1,6 @@
 {
   "name": "server-i",
-  "version": "0.0.1-beta10",
+  "version": "0.0.1-beta11",
   "description": "",
   "main": "./es/index.js",
   "module": "./es/index.js",
@@ -42,8 +42,7 @@
   },
   "homepage": "https://github.com/heifade/server-i#readme",
   "dependencies": {
-    "express": "^4.16.2",
-    "mysql-i": "^4.0.1"
+    "express": "^4.16.2"
   },
   "devDependencies": {
     "@types/chai": "^4.0.8",
@@ -55,6 +54,7 @@
     "chai": "^4.1.2",
     "coveralls": "^3.0.0",
     "mocha": "^4.0.1",
+    "mysql-i": "^4.0.4",
     "node-fetch": "^1.7.3",
     "nyc": "^11.3.0",
     "source-map-support": "^0.5.0",

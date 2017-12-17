@@ -1,4 +1,4 @@
-import { Save, ConnectionHelper, SaveType } from "mysql-i/es";
+import { Save, ConnectionHelper, SaveType } from "mysql-i";
 import { connConfig } from "./connConfig";
 
 /**

@@ -1,4 +1,4 @@
-import { Select, ConnectionHelper } from "mysql-i/es";
+import { Select, ConnectionHelper } from "mysql-i";
 import { connConfig } from "./connConfig";
 
 /**

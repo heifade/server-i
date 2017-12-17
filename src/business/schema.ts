@@ -1,4 +1,4 @@
-import { Exec, ConnectionHelper, SaveType, Transaction, Schema } from "mysql-i/es";
+import { Exec, ConnectionHelper, SaveType, Transaction, Schema } from "mysql-i";
 import { connConfig } from "./connConfig";
 
 /**
