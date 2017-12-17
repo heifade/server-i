@@ -2,6 +2,14 @@ import { NextFunction, Request, Response } from "express";
 import { cleanSchema } from "../business/schema";
 import { isArray, isString } from "util";
 
+/**
+ * 清缓存
+ *
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 export function apiCleanCache(req: Request, res: Response, next: NextFunction) {
   let databaseList = req.body;
 

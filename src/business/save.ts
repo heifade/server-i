@@ -1,6 +1,12 @@
 import { Save, ConnectionHelper, SaveType } from "mysql-i/es";
 import { connConfig } from "./connConfig";
 
+/**
+ * 保存多条数据(事务)
+ * 
+ * @export
+ * @param {Array<any>} list 
+ */
 export async function save(list: Array<any>) {
   let conn = await ConnectionHelper.create(connConfig);
 
