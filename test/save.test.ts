@@ -274,7 +274,7 @@ describe("save", function() {
     let list = [
       {
         data: {
-          id: 1,
+          // id: 1,
         },
         table: tableName,
         saveType: "1"
@@ -284,7 +284,7 @@ describe("save", function() {
     let saveResult = await ask(`save`, list);
 
     expect(saveResult.result).to.be.equal('error');
-    expect(saveResult.msg.code).to.be.equal('ER_NO_DEFAULT_FOR_FIELD');
+    expect(saveResult.msg.code).to.be.equal('ER_PARSE_ERROR');
 
     
 
