@@ -7,7 +7,7 @@ import { apiSelect } from "./api/apiSelect";
 import { apiExec } from "./api/apiExec";
 import { apiCleanCache } from "./api/apiCleanCache";
 
-let app = express();
+let app: core.Express = express();
 
 app.use("/static", express.static("static"));
 
