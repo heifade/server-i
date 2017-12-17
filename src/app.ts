@@ -1,5 +1,6 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
+import * as core from "express-serve-static-core";
 
 import { apiSave } from "./api/apiSave";
 import { apiSelect } from "./api/apiSelect";
@@ -21,3 +22,4 @@ app.use("/exec", apiExec);
 app.use("/cleanCache", apiCleanCache);
 
 export { app };
+
