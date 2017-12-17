@@ -1,24 +1,20 @@
 language: node_js
+sudo: enabled
 node_js:
   - "8"
 services:
   - mysql
 before_install:
   - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
-  - mysql -e 'create table if not exists test.tbl1(id int auto_increment primary key, name varchar(200), value varchar(200));'
-# script:
-  # - nyc mocha -t 5000
-  # - "npm test"
-  # - "npm run build"
-  # - "npm run test-nyc"
-# after_script:
-  # - "npm run test-nyc"
-  # - "npm run build"
+script:
+  - npm test
+  - npm run build
+after_script:
+  - npm run test-nyc
 
 cache:
   directories:
   - node_modules
-
 
 deploy:
   # - provider: npm
