@@ -2,7 +2,8 @@
   "name": "server-i",
   "version": "0.0.1-beta2",
   "description": "",
-  "main": "index.js",
+  "main": "./es/index.js",
+  "module": "./es/index.js",
   "scripts": {
     "removeDist": "node ./tools/deleteOutPath.js",
     "tsBuild": "tsc -p tsconfig.json",
