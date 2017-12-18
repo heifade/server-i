@@ -1,5 +1,5 @@
 import { Save, ConnectionHelper, SaveType } from "mysql-i";
-import { connConfig } from "./connConfig";
+import { AppConfig } from "../appConfig";
 
 /**
  * 保存多条数据(事务)
@@ -8,7 +8,7 @@ import { connConfig } from "./connConfig";
  * @param {Array<any>} list 
  */
 export async function save(list: Array<any>) {
-  let conn = await ConnectionHelper.create(connConfig);
+  let conn = await ConnectionHelper.create(AppConfig.dbConfig);
 
   list.map(m => {
     switch ((m.saveType + "").toLowerCase()) {

@@ -1,5 +1,4 @@
 import { Exec, ConnectionHelper, SaveType, Transaction, Schema } from "mysql-i";
-import { connConfig } from "./connConfig";
 
 /**
  * 清缓存

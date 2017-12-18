@@ -1,5 +1,5 @@
 import { Exec, ConnectionHelper, SaveType, Transaction } from "mysql-i";
-import { connConfig } from "./connConfig";
+import { AppConfig } from "../appConfig";
 
 /**
  * 执行SQL（事务）
@@ -9,7 +9,7 @@ import { connConfig } from "./connConfig";
  * @returns 
  */
 export async function exec(list: string[]) {
-  let conn = await ConnectionHelper.create(connConfig);
+  let conn = await ConnectionHelper.create(AppConfig.dbConfig);
 
   try {
     await Transaction.begin(conn);

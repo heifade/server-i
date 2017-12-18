@@ -1,5 +1,5 @@
 import { Select, ConnectionHelper } from "mysql-i";
-import { connConfig } from "./connConfig";
+import { AppConfig } from "../appConfig";
 
 /**
  * 查询一个SQL
@@ -10,7 +10,7 @@ import { connConfig } from "./connConfig";
  * @returns 
  */
 export async function select(sql: string, where: Array<any>) {
-  let conn = await ConnectionHelper.create(connConfig);
+  let conn = await ConnectionHelper.create(AppConfig.dbConfig);
 
   try {
     let result = await Select.select(conn, {
