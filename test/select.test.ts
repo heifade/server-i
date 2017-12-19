@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { ask } from "./fetchHelper";
+import { ask } from "./ask";
 import "mocha";
 
 let url = "http://localhost:3000";

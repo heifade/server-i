@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { ask } from "./fetchHelper";
+import { ask } from "./ask";
 import "mocha";
 
 let table1 = `tbl_server_test1`;
