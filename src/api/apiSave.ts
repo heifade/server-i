@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { save } from "../business/save";
+import { SaveDAL } from "../business/saveDAL";
 
 /**
  * 保存
@@ -11,7 +11,7 @@ import { save } from "../business/save";
  */
 export function apiSave(req: Request, res: Response, next: NextFunction) {
   let list = req.body;
-  save(list)
+  SaveDAL.save(list)
     .then(result => {
       res.send({
         result: "success",

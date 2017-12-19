@@ -1,8 +1,8 @@
 import { expect } from "chai";
-import { ask } from "./ask";
+import { ask } from "./util/ask";
+import { startServer, stopServer } from "./util/server";
 import "mocha";
 
-let url = "http://localhost:3000";
 
 let tableName = "tbl_server_test_select";
 
@@ -25,6 +25,12 @@ let getData = async function(where: Array<any>) {
 };
 
 describe("save", function() {
+  before(async () => {
+    await startServer();
+  });
+  after(async () => {
+    await stopServer();
+  })
   before(async () => {
     let pars = [`drop table if exists ${tableName}`, `create table if not exists ${tableName}(id int primary key auto_increment, value varchar(100))`];
     await ask(`exec`, pars);

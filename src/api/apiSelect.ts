@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { select } from "../business/select";
+import { SelectDAL } from "../business/selectDAL";
 
 /**
  * 查询
@@ -14,7 +14,7 @@ export function apiSelect(req: Request, res: Response, next: NextFunction) {
   let sql = req.body.sql;
   let where = req.body.where;
 
-  select(sql, where)
+  SelectDAL.select(sql, where)
     .then(result => {
       res.send({
         result: "success",

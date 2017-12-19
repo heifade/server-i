@@ -1,29 +1,30 @@
 import { NextFunction, Request, Response } from "express";
-import { exec } from "../business/exec";
+import { ExecDAL } from "../business/execDAL";
 
 /**
  * 执行
- * 
+ *
  * @export
- * @param {Request} req 
- * @param {Response} res 
- * @param {NextFunction} next 
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
  */
 export function apiExec(req: Request, res: Response, next: NextFunction) {
   let list = req.body;
 
-  exec(list)
+  ExecDAL.exec(list)
     .then(() => {
       res.send({
         result: "success",
-        data: null,
+        data: null
       });
       next();
     })
     .catch(err => {
       res.send({
         result: "error",
-        msg: err
+        code: err.code,
+        msg: err.message
       });
       next();
     });

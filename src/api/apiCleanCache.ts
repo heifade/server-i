@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { cleanSchema } from "../business/schema";
+import { SchemaDAL } from "../business/schemaDAL";
 import { isArray, isString } from "util";
 
 /**
@@ -16,7 +16,7 @@ export function apiCleanCache(req: Request, res: Response, next: NextFunction) {
   let asyncFunc = async function() {
     if (isArray(databaseList)) {
       for (let database of databaseList) {
-        await cleanSchema(database);
+        await SchemaDAL.clean(database);
       }
     } else {
       return Promise.reject("Please input is array!");

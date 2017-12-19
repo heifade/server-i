@@ -1,6 +1,7 @@
 import { expect } from "chai";
-import { ask } from "./ask";
+import { ask } from "./util/ask";
 import "mocha";
+import { startServer, stopServer } from "./util/server";
 
 let table1 = `tbl_server_test1`;
 let table2 = `tbl_server_test2`;
@@ -19,6 +20,12 @@ let getData = async function(table: string) {
 };
 
 describe("exec", function() {
+  before(async () => {
+    await startServer();
+  });
+  after(async () => {
+    await stopServer();
+  });
   it("exec", async () => {
     let pars = [`drop table if exists ${table1}`, `create table if not exists ${table1}(id int primary key, value varchar(100))`];
 
@@ -42,13 +49,13 @@ describe("exec", function() {
     result = await ask(`exec`, pars);
 
     expect(result.result).to.be.equal("error");
-    expect(result.msg.code).to.be.equal("ER_TABLE_EXISTS_ERROR");
+    expect(result.code).to.be.equal("ER_TABLE_EXISTS_ERROR");
   });
 
   it("cleanCache with error", async () => {
-    let result = await ask(`cleanCache`, "test");
+    let result = await ask(`cleanCache`, { key: 1 });
 
-    expect(result.result).to.be.equal('error');
-    expect(result.msg).to.be.equal('Please input is array!');
+    expect(result.result).to.be.equal("error");
+    expect(result.msg).to.be.equal("Please input is array!");
   });
 });
