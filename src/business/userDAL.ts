@@ -16,7 +16,7 @@ export class UserDAL {
             user_name varchar(100),
             password varchar(100),
             create_date datetime default current_timestamp,
-            update_date datetime default current_timestamp,
+            update_date datetime default current_timestamp
           )
         `
       );

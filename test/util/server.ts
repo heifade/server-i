@@ -1,10 +1,22 @@
 import { getApp, AppConfig } from "../../src/index";
 import { Server } from "http";
-import { serverPort } from './config';
+import { serverPort } from "./config";
+import { resolve } from "dns";
+import { ask } from "./ask";
 
 let server: Server;
+
+let haveInit = false;
+async function init() {
+  if (!haveInit) {
+    haveInit = true;
+    let result = await ask(`init`, {});
+    return result;
+  }
+}
+
 export async function startServer() {
-  return new Promise((resolve, reject) => {
+  let promise = new Promise((resolve, reject) => {
     let setConfig = function() {
       AppConfig.dbConfig = {
         host: "localhost",
@@ -25,6 +37,9 @@ export async function startServer() {
       resolve();
     });
   });
+  await promise;
+
+  await init();
 }
 
 export async function stopServer() {

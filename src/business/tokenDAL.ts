@@ -13,11 +13,36 @@ export class TokenDAL {
         ` create table if not exists ${this.tableName} (
           user_id bigint primary key,
           token varchar(100),
+          expire datetime,
+          active_flg bit default b'1',
           create_date datetime default current_timestamp,
-          update_date datetime default current_timestamp,
+          update_date datetime default current_timestamp
         )
       `
       );
+    } finally {
+      await ConnectionHelper.close(conn);
+    }
+  }
+
+  /**
+   * 当前用户的token是否有效
+   * 
+   * @static
+   * @param {number} userId 
+   * @returns 
+   * @memberof TokenDAL
+   */
+  public static async isActive(userId: number) {
+    let conn;
+    try {
+      conn = await getConnection();
+      let count = await Select.selectCount(conn, {
+        sql: `select * from ${this.tableName} where expire > now() and active_flg = 1 and user_id = ?`,
+        where: [userId]
+      });
+
+      return count > 0;
     } finally {
       await ConnectionHelper.close(conn);
     }

@@ -1,19 +1,16 @@
 import { NextFunction, Request, Response } from "express";
-import { SelectDAL } from "../business/selectDAL";
+import { InitDAL } from "../business/initDAL";
 
 /**
- * 查询
- *
+ * 初始化数据库
+ * 
  * @export
- * @param {Request} req
- * @param {Response} res
- * @param {NextFunction} next
+ * @param {Request} req 
+ * @param {Response} res 
+ * @param {NextFunction} next 
  */
-export function apiSelect(req: Request, res: Response, next: NextFunction) {
-  let sql = req.body.sql;
-  let where = req.body.where;
-
-  SelectDAL.select(sql, where)
+export function apiInit(req: Request, res: Response, next: NextFunction) {
+  InitDAL.init()
     .then(result => {
       res.send({
         result: "success",
