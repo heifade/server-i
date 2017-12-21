@@ -18,7 +18,6 @@ export function apiExec(req: Request, res: Response, next: NextFunction) {
       return;
     }
 
-    console.log(isLogin);
 
     try {
       await ExecDAL.exec(req.body);

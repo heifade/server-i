@@ -43,7 +43,7 @@
   "homepage": "https://github.com/heifade/server-i#readme",
   "dependencies": {
     "express": "^4.16.2",
-    "mysql-i": "^4.0.4"
+    "mysql-i": "^4.0.8"
   },
   "devDependencies": {
     "@types/chai": "^4.0.10",

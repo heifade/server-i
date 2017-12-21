@@ -3,6 +3,7 @@ import { AppConfig } from "../appConfig";
 import { Select } from "mysql-i/es";
 import { getConnection } from "./connectionHelper";
 import { TokenDAL } from "../business/tokenDAL";
+import { isNull } from 'lodash'
 
 export class Check {
   public static async getAppConfig() {
@@ -22,12 +23,15 @@ export class Check {
   }
 
   public static async checkLogin(req: Request, res: Response) {
-    if(req.header("userId") === null) {
-
-    }
-    let userId = req.header("userId");
     
-    let isLogin = await TokenDAL.isActive(Number(userId));
+    let userId = req.header("userId");
+    let token = req.header("token");
+
+    
+
+    
+    
+    let isLogin = await TokenDAL.isActive(Number(userId), token);
     if (!isLogin) {
       res.send({
         result: "error",

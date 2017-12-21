@@ -33,13 +33,14 @@ export class TokenDAL {
    * @returns 
    * @memberof TokenDAL
    */
-  public static async isActive(userId: number) {
+  public static async isActive(userId: number, token: string) {
     let conn;
     try {
       conn = await getConnection();
       let count = await Select.selectCount(conn, {
-        sql: `select * from ${this.tableName} where expire > now() and active_flg = 1 and user_id = ?`,
-        where: [userId]
+        sql: `select * from ${this.tableName} where 
+          expire > now() and active_flg = 1 and user_id = ? and token = ?`,
+        where: [userId, token]
       });
 
       return count > 0;
@@ -48,10 +49,12 @@ export class TokenDAL {
     }
   }
 
-  public static async add(userId: number, token: string) {
+  public static async add(userId: number) {
     let conn;
     try {
       conn = await getConnection();
+
+      let token = await Select.selectGUID(conn);
 
       let result = await Save.save(conn, {
         data: { user_id: userId, token },

@@ -1,5 +1,7 @@
 import { Select, ConnectionHelper, Exec } from "mysql-i";
 import { getConnection } from "../util/connectionHelper";
+import { TokenDAL } from "./tokenDAL";
+import { UserModel } from "../model/UserModel";
 
 export class UserDAL {
   private static tableName = `tblUser`;
@@ -30,12 +32,19 @@ export class UserDAL {
     try {
       conn = await getConnection();
 
-      let result = await Select.select(conn, {
+      let userData = await Select.selectTop1(conn, {
         sql: `select * from ${this.tableName} where user = ? and password = ?`,
         where: [user, password]
       });
+      let userModel: UserModel = null;
+      if (userData) {
+        TokenDAL.add(userData.user_id);
+        userModel = new UserModel();
+        userModel.userId = userData.user_id;
+        userModel.name = userData.name;
+      }
 
-      return result;
+      return userModel;
     } finally {
       await ConnectionHelper.close(conn);
     }
