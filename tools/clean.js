@@ -11,3 +11,4 @@ function deletePath(path) {
 
 deletePath("./es");
 deletePath("./docs");
+deletePath("./.nyc_output");
