@@ -1,6 +1,6 @@
 {
   "name": "server-i",
-  "version": "0.0.1-beta17",
+  "version": "0.0.1-beta18",
   "description": "",
   "main": "./es/index.js",
   "module": "./es/index.js",
@@ -54,6 +54,7 @@
     "chai": "^4.1.2",
     "coveralls": "^3.0.0",
     "fs-extra": "^5.0.0",
+    "fs-i": "^1.0.3",
     "mocha": "^4.0.1",
     "node-fetch": "^1.7.3",
     "nyc": "^11.3.0",
