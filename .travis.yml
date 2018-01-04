@@ -6,9 +6,11 @@ services:
   - mysql
 before_install:
   - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
+before_script:
+  - npm i pcreate
 script:
   - npm test
-  - npm run build
+  - pc build
 after_script:
   - npm run test-nyc
 
