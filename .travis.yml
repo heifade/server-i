@@ -9,14 +9,14 @@ before_install:
 before_script:
   - npm i pcreate
 script:
-  - npm test
-  - pc build
+  - pcreate test
+  - pcreate build
 after_script:
-  - npm run test-nyc
+
 
 cache:
   directories:
-  - node_modules
+    - node_modules
 
 deploy:
   - provider: npm
